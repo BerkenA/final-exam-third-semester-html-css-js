@@ -1,14 +1,12 @@
 import { singleListing } from "../api/constants.js";
 
-// Function to get post ID from the URL (assuming it's passed as a query parameter)
 function getPostIdFromQuery() {
-  const urlParams = new URLSearchParams(window.location.search); // Get query parameters from the URL
-  return urlParams.get("id"); // Get the value of 'id' query parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get("id");
 }
 
 async function getPostById(postId) {
-  // Add query parameters to the URL if needed
-  const postUrl = `${singleListing}/${postId}?includeDetails=true`; // Adding query param "includeDetails=true"
+  const postUrl = `${singleListing}/${postId}?includeDetails=true`;
   try {
     const response = await fetch(postUrl, {
       method: "GET",
@@ -17,14 +15,12 @@ async function getPostById(postId) {
       },
     });
 
-    // Check if response is OK
     if (!response.ok) {
       throw new Error("Post not found.");
     }
 
     const data = await response.json();
 
-    // Nested renderPost function
     function renderPost(listing) {
       const container = document.querySelector(".postContainer");
       container.innerHTML = `
@@ -41,8 +37,6 @@ async function getPostById(postId) {
             }
           `;
     }
-
-    // Call the nested renderPost function to render the post
     renderPost(data.data);
   } catch (error) {
     console.error("Error fetching post:", error);
@@ -51,8 +45,5 @@ async function getPostById(postId) {
   }
 }
 
-// Call the function to fetch the post
-const postId = getPostIdFromQuery(); // Get post ID from query parameters
+const postId = getPostIdFromQuery();
 getPostById(postId);
-
-console.log(postId); // Log the ID for debugging
