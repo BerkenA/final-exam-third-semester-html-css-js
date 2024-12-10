@@ -37,6 +37,7 @@ loginForm.addEventListener("submit", async (event) => {
 
     alert("Login successful");
     sessionStorage.setItem("authToken", accessToken);
+    sessionStorage.setItem("");
     window.location.href = "../post/index.html";
   } catch (error) {
     window.alert("Something went wrong, please try again");

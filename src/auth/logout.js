@@ -6,4 +6,4 @@ function logout() {
   window.location.href = "/auth/index.html";
 }
 
-document.addEventListener("click", logout);
+logoutButton.addEventListener("click", logout);

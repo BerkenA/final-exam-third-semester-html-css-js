@@ -3,7 +3,7 @@ import { allListings } from "../api/constants.js";
 let currentPage = 1;
 let sortField = "title";
 let sortOrder = "desc";
-let limit = 10;
+let limit = 25;
 
 const accessToken = sessionStorage.getItem("authToken");
 
@@ -14,7 +14,7 @@ if (!accessToken) {
 
 async function getAllListings(
   page = 1,
-  limit = 10,
+  limit = 25,
   sort = "title",
   sortOrder = "desc"
 ) {
@@ -46,7 +46,7 @@ function renderListings(listings) {
 
   if (listings && listings.length > 0) {
     listings.forEach((listing) => {
-      const listingDiv = document.createElement("div");
+      const listingDiv = document.querySelector(".postContainer");
       listingDiv.classList.add("listing");
 
       const image =
@@ -57,6 +57,7 @@ function renderListings(listings) {
       const tags = listing.tags ? listing.tags.join(", ") : "No tags";
 
       listingDiv.innerHTML = `
+        <a href="./post/singlepost.html?id=${listing.id}">
         <h2>${listing.title}</h2>
         <p><strong>Description:</strong> ${listing.description || "No description provided"}</p>
         <p><strong>Tags:</strong> ${tags}</p>
@@ -65,6 +66,7 @@ function renderListings(listings) {
         <p><strong>Bids:</strong> ${listing._count.bids}</p>
         <p><strong>Created:</strong> ${new Date(listing.created).toLocaleString()}</p>
         <p><strong>Last Updated:</strong> ${new Date(listing.updated).toLocaleString()}</p>
+        </a>
       `;
 
       container.appendChild(listingDiv);

@@ -12,7 +12,7 @@ export const allListings = `${auctionUrl}/listings`;
 
 export const currentListings = `${allListings}?_active=true`;
 
-export const singleListing = `${allListings}/`;
+export const singleListing = `${allListings}`;
 
 export const createListing = allListings;
 
