@@ -34,7 +34,9 @@ function createUser() {
     .then((response) => {
       if (!response.ok) {
         return response.json().then((errorResponse) => {
-          throw new Error(errorResponse.errors[0].message);
+          throw new Error(
+            errorResponse.errors?.[0]?.message || "Registration failed"
+          );
         });
       }
       return response.json();
