@@ -1,7 +1,6 @@
 import { loginUrl } from "../api/constants";
 
 const loginForm = document.getElementById("loginForm");
-const loginMessage = document.getElementById("loginMessage");
 
 const loginEndpoint = loginUrl;
 
@@ -11,10 +10,7 @@ loginForm.addEventListener("submit", async (event) => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const loginData = {
-    email,
-    password,
-  };
+  const loginData = { email, password };
 
   try {
     const response = await fetch(loginEndpoint, {
@@ -26,21 +22,27 @@ loginForm.addEventListener("submit", async (event) => {
     });
 
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || "Login failed. Please try again.");
+      let errorMessage = "Login failed. Please try again.";
+      try {
+        const errorData = await response.json();
+        errorMessage = errorData.message || errorMessage;
+      } catch (jsonError) {
+        console.error("Error parsing error response:", jsonError);
+      }
+      throw new Error(errorMessage);
     }
 
     const data = await response.json();
-
-    loginMessage.innerText = "Login successful!";
-    loginMessage.style.color = "green";
-
     const { accessToken } = data.data;
-    localStorage.setItem("authToken", accessToken);
 
-    window.location.href = "index.html";
+    alert("Login successful");
+    sessionStorage.setItem("authToken", accessToken);
+    window.location.href = "../post/index.html";
   } catch (error) {
-    loginMessage.innerText = error.message;
-    loginMessage.style.color = "red";
+    window.alert("Something went wrong, please try again");
   }
+});
+
+document.getElementById("registerButton").addEventListener("click", () => {
+  window.location.href = "../auth/register.html";
 });

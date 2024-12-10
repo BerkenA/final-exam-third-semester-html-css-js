@@ -2,7 +2,6 @@ import { registerUrl } from "../api/constants";
 
 const registrationForm = document.getElementById("registrationForm");
 
-//Function for creating a new user
 function createUser() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -12,12 +11,11 @@ function createUser() {
   const confirmPasswordValue = confirmPasswordInput.value;
 
   if (password !== confirmPasswordValue) {
-    alert("Oops, the passwords doesn't match!");
+    alert("Oops, the passwords don't match!");
     return;
   }
 
-  const myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
+  const myHeaders = { "Content-Type": "application/json" };
 
   const raw = JSON.stringify({
     name: name,
@@ -39,7 +37,7 @@ function createUser() {
           throw new Error(errorResponse.errors[0].message);
         });
       }
-      return response.json;
+      return response.json();
     })
     .then((result) => {
       window.alert("Registration was successful");
@@ -47,11 +45,10 @@ function createUser() {
     })
     .catch((error) => {
       console.error(error);
-      window.alert("Oops, there was an error: ", error);
+      window.alert(`Oops, there was an error: ${error.message}`);
     });
 }
 
-//Eventlistener for the register button
 registrationForm.addEventListener("submit", function (event) {
   event.preventDefault();
   createUser();
