@@ -108,7 +108,10 @@ function renderPagination(meta) {
 function changePage(page) {
   if (page < 1) return;
   currentPage = page;
-  window.scrollTo(0, 0);
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
   getAllListings(page, limit, sortField, sortOrder);
 }
 

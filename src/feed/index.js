@@ -57,7 +57,7 @@ function renderListings(listings) {
       }
 
       listingDiv.innerHTML = `
-  <a href="./post/listings.html?id=${listing.id}">
+    <a href="/post/listings.html?id=${listing.id}">
     <h2>${truncateText(listing.title, 25)}</h2>
     <p><strong>Description:</strong> ${truncateText(listing.description, 25)}</p>
     <p><strong>Tags:</strong> ${tags}</p>
@@ -103,6 +103,10 @@ function changePage(page) {
   if (page < 1) return;
   currentPage = page;
   getAllListings(page, limit, sortField, sortOrder);
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 }
 
 function changeSort(field) {
