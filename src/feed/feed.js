@@ -43,11 +43,10 @@ async function getAllListings(
 function renderListings(listings) {
   const container = document.querySelector(".mainContainer");
   container.innerHTML = "";
-
   if (listings && listings.length > 0) {
     listings.forEach((listing) => {
-      const listingDiv = document.querySelector(".postContainer");
-      listingDiv.classList.add("listing");
+      const listingDiv = document.createElement("div");
+      listingDiv.classList.add("postContainer", "listing");
 
       const image =
         listing.media && listing.media.length > 0
@@ -57,7 +56,7 @@ function renderListings(listings) {
       const tags = listing.tags ? listing.tags.join(", ") : "No tags";
 
       listingDiv.innerHTML = `
-        <a href="./post/singlepost.html?id=${listing.id}">
+        <a href="/post/listings.html?id=${listing.id}">
         <h2>${listing.title}</h2>
         <p><strong>Description:</strong> ${listing.description || "No description provided"}</p>
         <p><strong>Tags:</strong> ${tags}</p>

@@ -33,11 +33,12 @@ loginForm.addEventListener("submit", async (event) => {
     }
 
     const data = await response.json();
-    const { accessToken } = data.data;
+    const accessToken = data.data.accessToken;
+    const name = data.data.name;
 
     alert("Login successful");
     sessionStorage.setItem("authToken", accessToken);
-    sessionStorage.setItem("");
+    sessionStorage.setItem("username", name);
     window.location.href = "../post/index.html";
   } catch (error) {
     window.alert("Something went wrong, please try again");
