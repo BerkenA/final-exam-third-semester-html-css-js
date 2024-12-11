@@ -3,8 +3,6 @@ import { singleListing } from "../api/constants.js";
 const accessToken = sessionStorage.getItem("authToken");
 const removeBidAmount = document.querySelector(".bidFormContainer");
 
-console.log(removeBidAmount);
-
 function getPostIdFromQuery() {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get("id");
@@ -102,7 +100,6 @@ async function handleBidSubmission(event, postId) {
       return;
     }
 
-    console.log("Bid placed successfully:", data);
     alert("Bid placed successfully!");
   } catch (error) {
     console.error("Error placing bid:", error);
