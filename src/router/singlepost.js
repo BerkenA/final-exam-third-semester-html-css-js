@@ -22,10 +22,16 @@ async function getPostById(postId) {
     const data = await response.json();
 
     function renderPost(listing) {
+      function truncateText(text, maxLength) {
+        if (!text) return "No description provided";
+        return text.length > maxLength
+          ? text.substring(0, maxLength) + "..."
+          : text;
+      }
       const container = document.querySelector(".postContainer");
       container.innerHTML = `
-            <h1>${listing.title}</h1>
-            <p>${listing.description || "No description provided"}</p>
+            <h2>${truncateText(listing.title, 30)}</h2>
+            <p><strong>Description:</strong> ${truncateText(listing.description, 30)}</p>
             <div><strong>Tags:</strong> ${listing.tags.join(", ")}</div>
             <p><strong>Created:</strong> ${new Date(listing.created).toLocaleString()}</p>
             <p><strong>Ends At:</strong> ${new Date(listing.endsAt).toLocaleString()}</p>

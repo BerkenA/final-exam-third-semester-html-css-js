@@ -55,10 +55,17 @@ function renderListings(listings) {
 
       const tags = listing.tags ? listing.tags.join(", ") : "No tags";
 
+      function truncateText(text, maxLength) {
+        if (!text) return "No description provided";
+        return text.length > maxLength
+          ? text.substring(0, maxLength) + "..."
+          : text;
+      }
+
       listingDiv.innerHTML = `
         <a href="/post/listings.html?id=${listing.id}">
-        <h2>${listing.title}</h2>
-        <p><strong>Description:</strong> ${listing.description || "No description provided"}</p>
+        <h2>${truncateText(listing.title, 25)}</h2>
+        <p><strong>Description:</strong> ${truncateText(listing.description, 25)}</p>
         <p><strong>Tags:</strong> ${tags}</p>
         <p><strong>Ends At:</strong> ${new Date(listing.endsAt).toLocaleString()}</p>
         ${image}
