@@ -1,10 +1,17 @@
 import { singleListing } from "../api/constants.js";
 
 const accessToken = sessionStorage.getItem("authToken");
+const removeBidAmount = document.querySelector(".bidFormContainer");
+
+console.log(removeBidAmount);
 
 function getPostIdFromQuery() {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get("id");
+}
+
+if (!accessToken) {
+  removeBidAmount.style.display = "none";
 }
 
 async function getPostById(postId) {
