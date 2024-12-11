@@ -30,32 +30,34 @@ function submitListing(event) {
   event.preventDefault();
   const formData = new FormData(event.target);
 
+  // Check that title, description, and endsAt are filled out
   if (
     !formData.get("title") ||
     !formData.get("description") ||
-    !formData.get("tags") ||
-    !formData.get("image")
+    !formData.get("endsAt")
   ) {
-    alert("Please fill out all fields");
+    alert("Please fill out all required fields.");
     return;
   }
 
   const listingData = {
     title: formData.get("title"),
     description: formData.get("description"),
-    tags: formData
-      .get("tags")
-      .split(",")
-      .map((tag) => tag.trim()),
+    tags:
+      formData
+        .get("tags")
+        .split(",")
+        .map((tag) => tag.trim()) || [],
     media: [
       {
         url: formData.get("image"),
         alt: formData.get("altText") || "",
       },
     ],
-    endsAt: new Date().toISOString(),
+    endsAt: formData.get("endsAt"), // Capture the endsAt date from the form
   };
 
+  // Send the POST request to create the listing
   fetch(createListing, {
     method: "POST",
     headers: {
