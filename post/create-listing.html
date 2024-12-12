@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Listing</title>
+    <script src="/src/feed/create-listings.js" type="module" defer></script>
+</head>
+
+<body>
+    <h2>Create listing</h2>
+    <form class="createListingForm">
+        <label for="text">
+            Title of your listing:
+        </label>
+        <input placeholder="Type your title here" type="text" id="title" name="title" required />
+
+        <label for="text">
+            Description:
+        </label>
+        <textarea type="text" placeholder="Type your description here" id="description" name="description" rows="20"
+            maxlength="2000" required></textarea>
+
+        <label for="text">
+            Tags:
+        </label>
+        <input type="text" placeholder="Type your tags here" id="tags" name="tags" maxlength="24" />
+
+        <label for="altText">
+            Alt:
+        </label>
+        <input type="text" placeholder="Submit your alt text" id="altText" name="altText" />
+
+        <label for="image">
+            Submit image:
+        </label>
+        <input type="text" placeholder="Submit your image here" id="image" name="image" required />
+
+        <label for="endsAt">
+            Ends At (Date):
+        </label>
+        <input type="datetime-local" id="endsAt" name="endsAt" required />
+
+        <section style="display: none;" id="imagePreview"></section>
+        <button class="blogPost" type="submit">Create listing</button>
+    </form>
+
+    <div id="formMessage"></div>
+</body>
+
+</html>

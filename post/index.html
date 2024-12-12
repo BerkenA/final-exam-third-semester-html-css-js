@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../src/feed/feed.js" type="module" defer></script>
+    <script src="../src/auth/logout.js" type="module" defer>
+    </script>
+</head>
+<header>
+    <ul>
+        <li class="logoutButton">
+            Logout
+        </li>
+        <li class="profile">
+            <a href="/profile/index.html">
+                Your profile
+            </a>
+        </li>
+        <li class="createListing">
+            <a href="/post/create-listing.html">
+                Create listing
+            </a>
+        </li>
+    </ul>
+</header>
+
+<body>
+    <label for="sortField">Sort By:</label>
+    <select id="sortField">
+        <option value="title">Title</option>
+        <option value="created">Created Date</option>
+        <option value="endsAt">End Date</option>
+    </select>
+
+    <label for="sortOrder">Sort Order:</label>
+    <select id="sortOrder">
+        <option value="desc">Descending</option>
+        <option value="asc">Ascending</option>
+    </select>
+
+    <div class="mainContainer"></div>
+
+    <div class="paginationContainer"></div>
+</body>
+
+</html>
