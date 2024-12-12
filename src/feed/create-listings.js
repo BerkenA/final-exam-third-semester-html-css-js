@@ -30,7 +30,6 @@ function submitListing(event) {
   event.preventDefault();
   const formData = new FormData(event.target);
 
-  // Check that title, description, and endsAt are filled out
   if (
     !formData.get("title") ||
     !formData.get("description") ||
@@ -54,10 +53,9 @@ function submitListing(event) {
         alt: formData.get("altText") || "",
       },
     ],
-    endsAt: formData.get("endsAt"), // Capture the endsAt date from the form
+    endsAt: formData.get("endsAt"),
   };
 
-  // Send the POST request to create the listing
   fetch(createListing, {
     method: "POST",
     headers: {
@@ -70,7 +68,7 @@ function submitListing(event) {
     .then((response) => {
       if (response.ok) {
         alert("Listing created successfully!");
-        window.location.href = "/post/make.html";
+        window.location.href = "/post/index.html";
       } else {
         return response.json().then((errorData) => {
           throw new Error(errorData.message || "Failed to create listing.");

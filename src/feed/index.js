@@ -66,7 +66,7 @@ function renderListings(listings) {
     <p><strong>Bids:</strong> ${listing._count.bids}</p>
     <p><strong>Created:</strong> ${new Date(listing.created).toLocaleString()}</p>
     <p><strong>Last Updated:</strong> ${new Date(listing.updated).toLocaleString()}</p>
-  </a>
+    </a>
 `;
 
       container.appendChild(listingDiv);

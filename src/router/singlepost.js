@@ -15,7 +15,7 @@ if (!accessToken) {
 async function getPostById(postId) {
   try {
     const response = await fetch(
-      `${singleListing}/${postId}?includeDetails=true&_bids=true&_seller=true`,
+      `${singleListing}/${postId}?_seller=true&_bids=true`,
       {
         method: "GET",
         headers: {
@@ -61,7 +61,31 @@ async function getPostById(postId) {
                 : "<p>No image available</p>"
             }
           `;
+      renderBids(listing.bids);
     }
+
+    function renderBids(bid) {
+      const bidsContainer = document.querySelector(".bidsContainer");
+      if (bid && bid.length > 0) {
+        console.log(bid);
+        const bidList = bid
+          .map(
+            (bid) => `
+          <li>
+            <strong>Bid Amount:</strong> ${bid.amount}
+            <strong>By:</strong> ${bid.bidder.name}
+            <strong>Avatar:</strong><img src="${bid.bidder.banner.url}"
+            <em>Placed On:</em> ${new Date(bid.created).toLocaleString()}
+          </li>
+        `
+          )
+          .join("");
+        bidsContainer.innerHTML = `<ul>${bidList}</ul>`;
+      } else {
+        bidsContainer.innerHTML = "<p>No bids available.</p>";
+      }
+    }
+
     renderPost(data.data);
   } catch (error) {
     console.error("Error fetching post:", error);
@@ -110,6 +134,7 @@ async function handleBidSubmission(event, postId) {
 const postId = getPostIdFromQuery();
 getPostById(postId);
 
-document.getElementById("bidForm").addEventListener("submit", (event) => {
-  handleBidSubmission(event, postId);
+document.getElementById("bidForm").addEventListener("submit", async (event) => {
+  await handleBidSubmission(event, postId);
+  location.reload();
 });
