@@ -5,7 +5,6 @@ const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
 const mainContainer = document.querySelector(".mainContainer");
 const hideWhenSearched = document.querySelector(".hideSearch");
-console.log(document.body);
 
 searchForm.addEventListener("submit", async (event) => {
   event.preventDefault();

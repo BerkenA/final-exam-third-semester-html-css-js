@@ -7,42 +7,50 @@
     <script src="./src/feed/index.js" type="module" defer></script>
     <script src="/src/feed/search.js" type="module" defer></script>
     <title>The Auctioneer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<header>
-    <ul>
-        <li>
-            <a href="/auth/index.html">
-                Login
-            </a>
-        </li>
-    </ul>
-</header>
 
-<body>
-    <form id="searchForm">
-        <input type="text" id="searchInput" placeholder="Search listings..." required />
-        <button type="submit">Search</button>
-    </form>
-    <div id="searchResults"></div>
+<body class="bg-white text-black">
+    <header class="bg-gray-100 p-4 border-b border-gray-300">
+        <ul class="flex space-x-4">
+            <li>
+                <a href="/auth/index.html" class="text-black hover:bg-gray-300 p-2 rounded">Login</a>
+            </li>
+            <li>
+                <a href="/auth/register.html" class="text-black hover:bg-gray-300 p-2 rounded">Sign up</a>
+            </li>
+        </ul>
+        <form id="searchForm" class="mt-2 flex space-x-2">
+            <input type="text" id="searchInput" placeholder="Search listings..." required
+                class="border border-gray-300 p-2 rounded" />
+            <button type="submit" class="bg-black text-white p-2 rounded hover:bg-gray-700">Search</button>
+        </form>
+        <div id="searchResults"></div>
+        <div class="hideSearch m-4 p-4 bg-gray-50 border border-gray-300 rounded">
+            <label for="sortField">Sort By:</label>
+            <select id="sortField" class="border border-gray-300 rounded p-1">
+                <option value="title">Title</option>
+                <option value="created">Created Date</option>
+                <option value="endsAt">End Date</option>
+            </select>
 
-    <div class="hideSearch">
-        <label for="sortField">Sort By:</label>
-        <select id="sortField">
-            <option value="title">Title</option>
-            <option value="created">Created Date</option>
-            <option value="endsAt">End Date</option>
-        </select>
+            <label for="sortOrder">Sort Order:</label>
+            <select id="sortOrder" class="border border-gray-300 rounded p-1">
+                <option value="desc">Descending</option>
+                <option value="asc">Ascending</option>
+            </select>
+        </div>
+    </header>
+    <main class="p-4">
 
-        <label for="sortOrder">Sort Order:</label>
-        <select id="sortOrder">
-            <option value="desc">Descending</option>
-            <option value="asc">Ascending</option>
-        </select>
-    </div>
+        <div class="mainContainer grid grid-cols-1 md:grid-cols-2 gap-4">
 
-    <div class="mainContainer"></div>
+        </div>
 
-    <div class="paginationContainer"></div>
+        <div class="paginationContainer m-4 p-4 text-center">
+
+        </div>
+    </main>
 </body>
 
 </html>
