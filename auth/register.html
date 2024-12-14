@@ -6,39 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <script src="../src/auth/register.js" type="module" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- <link rel="icon" href="/assets/" type="image/x-icon"> need to download an icon to use here. -->
+    <meta name="description"
+        content="Register to The Auctioneer, create a user, description, tags, and media on our platform.">
+    <meta name="keywords" content="auction, listing, update, sell, buy, auction site, marketplace, bidding, register">
+    <meta name="author" content="The Auctioneer">
 </head>
 
-<body>
-    <div class="registration-container">
-        <h2>Create a New Account</h2>
-        <form id="registrationForm">
-            <div class="form-group">
-                <label for="name">Username</label>
-                <input type="text" id="name" name="name" placeholder="Enter your username" required />
-            </div>
+<body class="bg-white text-black">
+    <header class="bg-yellow-300 p-4 border-b border-gray-300">
+        <ul class="flex space-x-4">
+            <li>
+                <a href="/auth/index.html" class="text-black hover:bg-gray-300 p-2 rounded">Login</a>
+            </li>
+            <li>
+                <a href="/auth/register.html" class="text-black hover:bg-gray-300 p-2 rounded">Sign up</a>
+            </li>
+            <li>
+                <a href="/index.html" class="text-black hover:bg-gray-300 p-2 rounded">Home</a>
+            </li>
+        </ul>
+    </header>
 
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required />
-            </div>
+    <main class="flex justify-center items-center h-screen bg-gray-50">
+        <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-md border border-gray-300">
+            <h2 class="text-2xl font-bold mb-4 text-center">Create a New Account</h2>
+            <form id="registrationForm" class="space-y-4">
+                <div>
+                    <label for="name" class="block text-sm font-medium mb-1">Username</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your username" required
+                        class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required />
-            </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium mb-1">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required
+                        class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
 
-            <div class="form-group">
-                <label for="confirmPassword">Confirm Password</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password"
-                    required />
-            </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium mb-1">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required
+                        class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
 
-            <div class="form-group">
-                <button type="submit">Register</button>
-            </div>
-        </form>
-        <p>Already have an account? <a href="../auth/index.html">Login here</a></p>
-    </div>
+                <div>
+                    <label for="confirmPassword" class="block text-sm font-medium mb-1">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword"
+                        placeholder="Confirm your password" required
+                        class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-black text-white py-2 rounded hover:bg-gray-700">Register</button>
+            </form>
+            <p class="mt-4 text-center text-sm">
+                Already have an account?
+                <a href="../auth/index.html" class="text-blue-500 hover:underline">Login here</a>
+            </p>
+        </div>
+    </main>
 </body>
 
 </html>

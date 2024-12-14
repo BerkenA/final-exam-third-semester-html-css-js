@@ -4,46 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="../src/feed/feed.js" type="module" defer></script>
-    <script src="../src/auth/logout.js" type="module" defer>
-    </script>
+    <title>The Auctioneer: Listings</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="/src/feed/feed.js" type="module" defer></script>
+    <script src="/src/feed/search.js" type="module" defer></script>
+    <script src="/src/auth/logout.js" type="module" defer></script>
+    <!-- <link rel="icon" href="/assets/" type="image/x-icon"> need to download an icon to use here. -->
+    <meta name="description" content="homepage, auctioneer, description, tags, and media on our platform.">
+    <meta name="keywords" content="auction, listing, update, sell, buy, auction site, marketplace, bidding, home">
+    <meta name="author" content="The Auctioneer">
 </head>
-<header>
-    <ul>
-        <li class="logoutButton">
-            Logout
-        </li>
-        <li class="profile">
-            <a href="/profile/index.html">
-                Your profile
-            </a>
-        </li>
-        <li class="createListing">
-            <a href="/post/create-listing.html">
-                Create listing
-            </a>
-        </li>
-    </ul>
-</header>
 
-<body>
-    <label for="sortField">Sort By:</label>
-    <select id="sortField">
-        <option value="title">Title</option>
-        <option value="created">Created Date</option>
-        <option value="endsAt">End Date</option>
-    </select>
+<body class="bg-white text-black">
+    <header class="bg-gray-100 p-4 border-b border-gray-300">
+        <ul class="flex space-x-4">
+            <li class="logoutButton">
+                <a href="#" class="text-black hover:bg-gray-300 p-2 rounded">Logout</a>
+            </li>
+            <li class="profile">
+                <a href="/profile/index.html" class="text-black hover:bg-gray-300 p-2 rounded">Your profile</a>
+            </li>
+            <li class="createListing">
+                <a href="/post/create-listing.html" class="text-black hover:bg-gray-300 p-2 rounded">Create listing</a>
+            </li>
+        </ul>
+        <form id="searchForm" class="mt-4">
+            <input type="text" id="searchInput" placeholder="Search listings..." required class="border rounded p-2" />
+            <button type="submit" class="bg-black text-white p-2 rounded hover:bg-gray-700">Search</button>
+        </form>
+        <div id="searchResults" class="mt-2"></div>
+    </header>
 
-    <label for="sortOrder">Sort Order:</label>
-    <select id="sortOrder">
-        <option value="desc">Descending</option>
-        <option value="asc">Ascending</option>
-    </select>
 
-    <div class="mainContainer"></div>
+    <main class="p-4">
+        <div class="hideSearch flex items-center mb-4">
+            <label for="sortField" class="mr-2">Sort By:</label>
+            <select id="sortField" class="border rounded p-2">
+                <option value="title">Title</option>
+                <option value="created">Created Date</option>
+                <option value="endsAt">End Date</option>
+            </select>
 
-    <div class="paginationContainer"></div>
+            <label for="sortOrder" class="ml-4 mr-2">Sort Order:</label>
+            <select id="sortOrder" class="border rounded p-2">
+                <option value="desc">Descending</option>
+                <option value="asc">Ascending</option>
+            </select>
+        </div>
+
+        <div class="mainContainer grid grid-cols-1 gap-4"></div>
+
+        <div class="paginationContainer mt-4"></div>
+    </main>
 </body>
 
 </html>

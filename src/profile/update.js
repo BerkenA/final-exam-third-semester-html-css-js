@@ -12,8 +12,8 @@ if (!accessToken) {
 }
 
 if (!profileName) {
-  alert("No profile name found in URL. Redirecting to the homepage...");
-  window.location.href = "/feed/index.html";
+  alert("No profile name found in URL. Redirecting to login...");
+  window.location.href = "/auth/index.html";
 }
 
 function fetchProfileData() {

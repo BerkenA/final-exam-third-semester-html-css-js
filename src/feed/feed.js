@@ -3,7 +3,7 @@ import { allListings } from "../api/constants.js";
 let currentPage = 1;
 let sortField = "title";
 let sortOrder = "desc";
-let limit = 25;
+let limit = 15;
 
 const accessToken = sessionStorage.getItem("authToken");
 
@@ -14,7 +14,7 @@ if (!accessToken) {
 
 async function getAllListings(
   page = 1,
-  limit = 25,
+  limit = 15,
   sort = "title",
   sortOrder = "desc"
 ) {
