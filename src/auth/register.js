@@ -1,6 +1,7 @@
 import { registerUrl } from "../api/constants";
 
 const registrationForm = document.getElementById("registrationForm");
+const displayError = document.getElementById("errorDiv");
 
 function createUser() {
   const email = document.getElementById("email").value;
@@ -42,7 +43,8 @@ function createUser() {
       return response.json();
     })
     .then((result) => {
-      window.alert("Registration was successful");
+      displayError.style.display = "block";
+      displayError.innerHTML = "Registration succesfull!";
       window.location.href = "/auth/index.html";
     })
     .catch((error) => {

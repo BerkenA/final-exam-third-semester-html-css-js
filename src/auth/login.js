@@ -13,7 +13,7 @@ loginForm.addEventListener("submit", async (event) => {
   const loginData = { email, password };
 
   try {
-    const response = await fetch(oginEndpoint, {
+    const response = await fetch(loginEndpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,14 +36,13 @@ loginForm.addEventListener("submit", async (event) => {
     const accessToken = data.data.accessToken;
     const name = data.data.name;
 
-    alert("Login successful");
+    displayError.style.display = "Login succesfull";
     sessionStorage.setItem("authToken", accessToken);
     sessionStorage.setItem("username", name);
     window.location.href = "../post/index.html";
   } catch (error) {
     displayError.style.display = "block";
-    displayError.innerHTML = `<p>${error.message}</p>`;
-    console.log(displayError);
+    displayError.innerHTML = `<p style="color:red">${error.message}</p>`;
   }
 });
 
