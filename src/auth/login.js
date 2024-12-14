@@ -1,7 +1,7 @@
 import { loginUrl } from "../api/constants";
 
 const loginForm = document.getElementById("loginForm");
-
+const displayError = document.getElementById("errorDiv");
 const loginEndpoint = loginUrl;
 
 loginForm.addEventListener("submit", async (event) => {
@@ -13,7 +13,7 @@ loginForm.addEventListener("submit", async (event) => {
   const loginData = { email, password };
 
   try {
-    const response = await fetch(loginEndpoint, {
+    const response = await fetch(oginEndpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,7 +25,7 @@ loginForm.addEventListener("submit", async (event) => {
       let errorMessage = "Login failed. Please try again.";
       try {
         const errorData = await response.json();
-        errorMessage = errorData.message || errorMessage;
+        errorMessage = errorData.errors?.[0]?.message || errorMessage;
       } catch (jsonError) {
         console.error("Error parsing error response:", jsonError);
       }
@@ -41,7 +41,9 @@ loginForm.addEventListener("submit", async (event) => {
     sessionStorage.setItem("username", name);
     window.location.href = "../post/index.html";
   } catch (error) {
-    window.alert("Something went wrong, please try again");
+    displayError.style.display = "block";
+    displayError.innerHTML = `<p>${error.message}</p>`;
+    console.log(displayError);
   }
 });
 

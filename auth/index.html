@@ -7,10 +7,15 @@
     <title>Login</title>
     <script src="../src/auth/login.js" type="module" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- <link rel="icon" href="/assets/" type="image/x-icon"> need to download an icon to use here. -->
+    <meta name="description"
+        content="Login to The Auctioneer, create a user, description, tags, and media on our platform.">
+    <meta name="keywords" content="auction, listing, update, sell, buy, auction site, marketplace, bidding, login">
+    <meta name="author" content="The Auctioneer">
 </head>
 
 <body class="bg-white text-black">
-    <header class="bg-gray-100 p-4 border-b border-gray-300">
+    <header class="bg-gray-300 p-4 border-b border-gray-300">
         <ul class="flex space-x-4">
             <li>
                 <a href="/auth/index.html" class="text-black hover:bg-gray-300 p-2 rounded">Login</a>
@@ -33,7 +38,9 @@
                     <input type="email" id="email" name="email" required
                         class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
+                <div id="errrorDiv">
 
+                </div>
                 <div>
                     <label for="password" class="block text-sm font-medium mb-1">Password:</label>
                     <input type="password" id="password" name="password" required

@@ -41,16 +41,16 @@ function renderListings(listings) {
     listings.forEach((listing) => {
       const listingDiv = document.createElement("div");
       listingDiv.classList.add(
-        "bg-gray-50",
+        "bg-ivory",
         "border",
-        "border-gray-300",
         "rounded",
         "p-4",
         "flex",
         "items-stretch",
         "gap-x-4",
         "mb-4",
-        "shadow-md"
+        "shadow-md",
+        "flex-wrap"
       );
 
       const image = document.createElement("img");
@@ -68,32 +68,40 @@ function renderListings(listings) {
       infoDiv.classList.add("flex", "flex-col", "justify-between", "flex-1");
 
       const title = document.createElement("h2");
-      title.classList.add("font-bold", "text-lg", "mb-2");
+      title.classList.add("font-bold", "text-lg", "mb-2", "text-black");
       title.textContent = truncateText(listing.title, 25);
 
       const description = document.createElement("p");
-      description.classList.add("mb-1");
+      description.classList.add("mb-1", "text-black");
       description.innerHTML = `<strong>Description:</strong> ${truncateText(listing.description, 25)}`;
 
       const tags = document.createElement("p");
-      tags.classList.add("mb-1");
-      tags.innerHTML = `<strong>Tags:</strong> ${listing.tags ? listing.tags.join(", ") : "No tags"}`;
+      tags.classList.add("mb-1", "text-black");
+      tags.innerHTML = `<strong>Tags:</strong> ${
+        listing.tags ? listing.tags.join(", ") : "No tags"
+      }`;
 
       const endsAt = document.createElement("p");
-      endsAt.classList.add("mb-1");
-      endsAt.innerHTML = `<strong>Ends At:</strong> ${new Date(listing.endsAt).toLocaleString()}`;
+      endsAt.classList.add("mb-1", "text-black");
+      endsAt.innerHTML = `<strong>Ends At:</strong> ${new Date(
+        listing.endsAt
+      ).toLocaleString()}`;
 
       const bids = document.createElement("p");
-      bids.classList.add("mb-1");
+      bids.classList.add("mb-1", "text-black");
       bids.innerHTML = `<strong>Bids:</strong> ${listing._count.bids}`;
 
       const created = document.createElement("p");
-      created.classList.add("mb-1");
-      created.innerHTML = `<strong>Created:</strong> ${new Date(listing.created).toLocaleString()}`;
+      created.classList.add("mb-1", "text-black");
+      created.innerHTML = `<strong>Created:</strong> ${new Date(
+        listing.created
+      ).toLocaleString()}`;
 
       const updated = document.createElement("p");
-      updated.classList.add("mb-1");
-      updated.innerHTML = `<strong>Last Updated:</strong> ${new Date(listing.updated).toLocaleString()}`;
+      updated.classList.add("mb-1", "text-black");
+      updated.innerHTML = `<strong>Last Updated:</strong> ${new Date(
+        listing.updated
+      ).toLocaleString()}`;
 
       const link = document.createElement("a");
       link.href = `/post/listings.html?id=${listing.id}`;

@@ -5,14 +5,9 @@ const profileName = sessionStorage.getItem("username");
 const profileContainer = document.getElementById("profileContainer");
 const listingsContainer = document.getElementById("listingsContainer");
 
-if (!accessToken) {
+if (!accessToken || !profileName) {
   alert("You need to be logged in to view this page. Redirecting to login...");
   window.location.href = "/auth/index.html";
-}
-
-if (!profileName) {
-  alert("No profile name found in URL. Redirecting to the homepage...");
-  window.location.href = "/post/index.html";
 }
 
 function fetchProfileData() {
@@ -54,8 +49,6 @@ function fetchProfileData() {
           .addEventListener("click", () => {
             window.location.href = `/profile/update.html?name=${profileName}`;
           });
-
-        // Fetch and display all listings by the profile after loading profile data
         fetchAllListingsByProfile();
       } else {
         alert("Failed to load profile data.");
