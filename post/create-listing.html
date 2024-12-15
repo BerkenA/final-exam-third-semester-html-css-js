@@ -12,45 +12,63 @@
     <meta name="author" content="The Auctioneer">
 </head>
 
-<body>
-    <h2>Create listing</h2>
-    <form class="createListingForm">
-        <label for="text">
-            Title of your listing:
-        </label>
-        <input placeholder="Type your title here" type="text" id="title" name="title" required />
+<body class="bg-gray-300 text-black">
+    <header class="bg-deepBlue text-gold p-4 border-b border-gold">
+        <ul class="flex space-x-4">
+            <li class="logoutButton">
+                <a href="#" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Logout</a>
+            </li>
+            <li class="profile">
+                <a href="/profile/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Your
+                    profile</a>
+            </li>
+            <li class="createListing">
+                <a href="/post/create-listing.html"
+                    class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Create listing</a>
+            </li>
+        </ul>
+    </header>
 
-        <label for="text">
-            Description:
-        </label>
-        <textarea type="text" placeholder="Type your description here" id="description" name="description" rows="20"
-            maxlength="2000" required></textarea>
+    <main class="p-8">
+        <h2 class="text-2xl font-bold text-center text-deepBlue mb-8">Create Your Listing</h2>
+        <form class="createListingForm max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg border border-deepBlue">
+            <label for="title" class="block text-deepBlue font-semibold mb-2">Title of Your Listing:</label>
+            <input type="text" id="title" name="title" placeholder="Type your title here" required
+                class="w-full border-deepBlue border-2 p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-deepBlue" />
 
-        <label for="text">
-            Tags:
-        </label>
-        <input type="text" placeholder="Type your tags here" id="tags" name="tags" maxlength="24" />
+            <label for="description" class="block text-deepBlue font-semibold mb-2">Description:</label>
+            <textarea id="description" name="description" rows="6" maxlength="2000"
+                placeholder="Type your description here" required
+                class="w-full border-deepBlue border-2 p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-deepBlue"></textarea>
 
-        <label for="altText">
-            Alt:
-        </label>
-        <input type="text" placeholder="Submit your alt text" id="altText" name="altText" />
+            <label for="tags" class="block text-deepBlue font-semibold mb-2">Tags:</label>
+            <input type="text" id="tags" name="tags" maxlength="24" placeholder="Type your tags here"
+                class="w-full border-deepBlue border-2 p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-deepBlue" />
 
-        <label for="image">
-            Submit image:
-        </label>
-        <input type="text" placeholder="Submit your image here" id="image" name="image" required />
+            <label for="altText" class="block text-deepBlue font-semibold mb-2">Alt Text for Image:</label>
+            <input type="text" id="altText" name="altText" placeholder="Submit your alt text"
+                class="w-full border-deepBlue border-2 p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-deepBlue" />
 
-        <label for="endsAt">
-            Ends At (Date):
-        </label>
-        <input type="datetime-local" id="endsAt" name="endsAt" required />
+            <label for="image" class="block text-deepBlue font-semibold mb-2">Image URL:</label>
+            <input type="text" id="image" name="image" placeholder="Submit your image here" required
+                class="w-full border-deepBlue border-2 p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-deepBlue" />
 
-        <section style="display: none;" id="imagePreview"></section>
-        <button class="blogPost" type="submit">Create listing</button>
-    </form>
+            <section id="imagePreview" class="hidden mb-4 max-w-m max-h-64 overflow-hidden mx-auto">
+            </section>
 
-    <div id="formMessage"></div>
+
+            <label for="endsAt" class="block text-deepBlue font-semibold mb-2">Ends At (Date):</label>
+            <input type="datetime-local" id="endsAt" name="endsAt" required
+                class="w-full border-deepBlue border-2 p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-deepBlue" />
+
+
+            <button type="submit"
+                class="w-full bg-deepBlue text-gold p-4 rounded hover:bg-gold hover:text-deepBlue font-semibold focus:outline-none focus:ring-2 focus:ring-gold">Create
+                Listing</button>
+        </form>
+
+        <div id="formMessage" class="mt-4 text-center"></div>
+    </main>
 </body>
 
 </html>

@@ -12,9 +12,6 @@ if (!accessToken) {
 
 function previewImage() {
   imgPreview.innerHTML = `
-    <label for="preview">
-    Image preview:
-    </label>
     <img src="${imgInput.value}" id="preview" alt="preview" style="width: 100%">`;
 
   if (imgInput.value.length > 13) {

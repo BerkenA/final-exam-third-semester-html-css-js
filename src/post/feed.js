@@ -3,7 +3,7 @@ import { allListings } from "../api/constants.js";
 let currentPage = 1;
 let sortField = "title";
 let sortOrder = "desc";
-let limit = 15;
+let limit = 16;
 
 const accessToken = sessionStorage.getItem("authToken");
 
@@ -14,7 +14,7 @@ if (!accessToken) {
 
 async function getAllListings(
   page = 1,
-  limit = 15,
+  limit = 16,
   sort = "title",
   sortOrder = "desc"
 ) {
@@ -43,43 +43,122 @@ async function getAllListings(
 function renderListings(listings) {
   const container = document.querySelector(".mainContainer");
   container.innerHTML = "";
+
   if (listings && listings.length > 0) {
     listings.forEach((listing) => {
       const listingDiv = document.createElement("div");
-      listingDiv.classList.add("postContainer", "listing");
+      listingDiv.classList.add(
+        "bg-white",
+        "border",
+        "shadow-deepBlue",
+        "rounded",
+        "p-4",
+        "flex",
+        "items-stretch",
+        "gap-x-4",
+        "mb-4",
+        "shadow-md",
+        "flex-wrap"
+      );
 
-      const image =
+      const image = document.createElement("img");
+      image.src =
         listing.media && listing.media.length > 0
-          ? `<img src="${listing.media[0].url}" alt="${listing.media[0].alt || "Listing Image"}" style="max-width: 300px;">`
-          : "<p>No image available</p>";
+          ? listing.media[0].url
+          : "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg";
+      image.alt =
+        listing.media && listing.media.length > 0
+          ? listing.media[0].alt || "Listing Image"
+          : "No Image";
+      image.classList.add("w-48", "h-full", "object-cover");
 
-      const tags = listing.tags ? listing.tags.join(", ") : "No tags";
+      const infoDiv = document.createElement("div");
+      infoDiv.classList.add("flex", "flex-col", "justify-between", "flex-1");
 
-      function truncateText(text, maxLength) {
-        if (!text) return "No description provided";
-        return text.length > maxLength
-          ? text.substring(0, maxLength) + "..."
-          : text;
-      }
+      const title = document.createElement("h2");
+      title.classList.add("font-bold", "text-lg", "mb-2", "text-deepBlue");
+      title.textContent = truncateText(listing.title, 20);
 
-      listingDiv.innerHTML = `
-        <a href="/post/listings.html?id=${listing.id}">
-        <h2>${truncateText(listing.title, 25)}</h2>
-        <p><strong>Description:</strong> ${truncateText(listing.description, 25)}</p>
-        <p><strong>Tags:</strong> ${tags}</p>
-        <p><strong>Ends At:</strong> ${new Date(listing.endsAt).toLocaleString()}</p>
-        ${image}
-        <p><strong>Bids:</strong> ${listing._count.bids}</p>
-        <p><strong>Created:</strong> ${new Date(listing.created).toLocaleString()}</p>
-        <p><strong>Last Updated:</strong> ${new Date(listing.updated).toLocaleString()}</p>
-        </a>
-      `;
+      const description = document.createElement("p");
+      description.classList.add("mb-1", "text-deepBlue");
+      description.innerHTML = `<strong>Description:</strong> ${truncateText(listing.description, 20)}`;
 
+      const tags = document.createElement("p");
+      tags.classList.add("mb-1", "text-deepBlue");
+      tags.innerHTML = `<strong>Tags:</strong> ${
+        listing.tags ? listing.tags.join(", ") : "No tags"
+      }`;
+
+      const endsAt = document.createElement("p");
+      endsAt.classList.add("mb-1", "text-deepBlue");
+      endsAt.innerHTML = `<strong>Ends At:</strong> ${new Date(listing.endsAt).toLocaleString()}`;
+
+      const countdown = document.createElement("p");
+      countdown.classList.add("mb-1", "text-deepBlue");
+      countdown.innerHTML = `<strong>Time Left:</strong> <span id="timer-${listing.id}"></span>`;
+
+      const bids = document.createElement("p");
+      bids.classList.add("mb-1", "text-deepBlue");
+      bids.innerHTML = `<strong>Bids:</strong> ${listing._count.bids}`;
+
+      const created = document.createElement("p");
+      created.classList.add("mb-1", "text-deepBlue");
+      created.innerHTML = `<strong>Created:</strong> ${new Date(listing.created).toLocaleString()}`;
+
+      const updated = document.createElement("p");
+      updated.classList.add("mb-1", "text-deepBlue");
+      updated.innerHTML = `<strong>Last Updated:</strong> ${new Date(listing.updated).toLocaleString()}`;
+
+      const link = document.createElement("a");
+      link.href = `/post/listings.html?id=${listing.id}`;
+      link.classList.add("block");
+      link.appendChild(title);
+      link.appendChild(description);
+      link.appendChild(tags);
+      link.appendChild(endsAt);
+      link.appendChild(countdown);
+      link.appendChild(bids);
+      link.appendChild(created);
+      link.appendChild(updated);
+
+      infoDiv.appendChild(link);
+      listingDiv.appendChild(image);
+      listingDiv.appendChild(infoDiv);
       container.appendChild(listingDiv);
+
+      startCountdown(listing.id, listing.endsAt);
     });
   } else {
     container.innerHTML = "<p>No listings available.</p>";
   }
+}
+
+function truncateText(text, maxLength) {
+  if (!text) return "No description provided";
+  return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
+}
+
+function startCountdown(listingId, endTime) {
+  const timerElement = document.getElementById(`timer-${listingId}`);
+  const endDate = new Date(endTime).getTime();
+
+  const interval = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = endDate - now;
+
+    if (distance <= 0) {
+      clearInterval(interval);
+      timerElement.innerHTML = "Auction Ended";
+    } else {
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      timerElement.innerHTML = `${hours}h ${minutes}m ${seconds}s`;
+    }
+  }, 1000);
 }
 
 function renderPagination(meta) {

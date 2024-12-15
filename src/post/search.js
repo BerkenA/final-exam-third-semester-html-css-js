@@ -3,8 +3,6 @@ import { allListings } from "../api/constants";
 const searchForm = document.getElementById("searchForm");
 const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
-const mainContainer = document.querySelector(".mainContainer");
-const hideWhenSearched = document.querySelector(".hideSearch");
 
 searchForm.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -14,9 +12,6 @@ searchForm.addEventListener("submit", async (event) => {
     alert("Please enter a search query.");
     return;
   }
-
-  mainContainer.innerHTML = "";
-  hideWhenSearched.innerHTML = "";
 
   try {
     const response = await fetch(`${allListings}/search?q=${query}`, {
@@ -32,6 +27,8 @@ searchForm.addEventListener("submit", async (event) => {
     }
 
     const data = await response.json();
+    searchResults.classList.add("block");
+    searchResults.classList.remove("hidden");
     displaySearchResults(data);
   } catch (error) {
     console.error("Error:", error);
@@ -39,23 +36,31 @@ searchForm.addEventListener("submit", async (event) => {
   }
 });
 
+document.addEventListener("click", (event) => {
+  if (!searchResults.contains(event.target) && event.target !== searchInput) {
+    searchResults.classList.add("hidden");
+    searchResults.classList.remove("block");
+  }
+});
+
 function displaySearchResults(results) {
   const listings = results.data;
   if (!listings || listings.length === 0) {
-    searchResults.innerHTML = "<p>No results found.</p>";
+    searchResults.innerHTML =
+      "<p class='text-center text-deepBlue'>No results found.</p>";
     return;
   }
 
   const resultItems = listings
     .map(
       (item) => `
-          <div class="result-item">
-            <h3>${item.title}</h3>
-            <img src="${item.media?.[0]?.url || "default-image.jpg"}" alt="${item.title}" />
-            <p>${item.description}</p>
-            <a href="/post/listings.html?id=${item.id}">View Details</a>
-          </div>
-        `
+        <div class="result-item bg-white text-deepBlue p-6 rounded-lg shadow-md border border-deepBlue mb-4">
+          <h3 class="text-xl font-bold text-deepBlue mb-2">${item.title}</h3>
+          <img src="${item.media?.[0]?.url || "default-image.jpg"}" alt="${item.title}" class="w-full h-48 object-cover rounded-md mb-4" />
+          <p class="text-sm text-deepBlue mb-4">${item.description}</p>
+          <a href="/post/listings.html?id=${item.id}" class="text-deepBlue hover:text-deepBlue hover:underline">View Details</a>
+        </div>
+      `
     )
     .join("");
 

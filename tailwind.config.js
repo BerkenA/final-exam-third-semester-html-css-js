@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        ivory: "#F5F5DC",
-        gold: "#F1D302",
-        black: "#020100",
+        white: "#F9F9F9",
+        gold: "#F9E871",
+        deepBlue: "#002D62",
       },
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
