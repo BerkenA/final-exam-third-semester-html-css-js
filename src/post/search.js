@@ -29,7 +29,11 @@ searchForm.addEventListener("submit", async (event) => {
     const data = await response.json();
     searchResults.classList.add("block");
     searchResults.classList.remove("hidden");
-    displaySearchResults(data);
+    if (!data.data || data.data.length === 0) {
+      searchResults.innerHTML = `<p class="text-gold">No search results were found`;
+    } else {
+      displaySearchResults(data);
+    }
   } catch (error) {
     console.error("Error:", error);
     searchResults.innerHTML = `<p>Error fetching search results. Please try again later.</p>`;
@@ -47,7 +51,7 @@ function displaySearchResults(results) {
   const listings = results.data;
   if (!listings || listings.length === 0) {
     searchResults.innerHTML =
-      "<p class='text-center text-deepBlue'>No results found.</p>";
+      "<p class='text-center text-gold'>No results found.</p>";
     return;
   }
 

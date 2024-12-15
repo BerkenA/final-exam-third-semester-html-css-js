@@ -6,22 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <script src="/src/main.js" type="module" defer></script>
-    <!-- <link rel="icon" href="/assets/" type="image/x-icon"> need to download an icon to use here. -->
-    <meta name="description" content="profile, page, auctioneer, description, tags, and media on our platform.">
-    <meta name="keywords"
-        content="your home page,auction, listing, sell, buy, auction site, marketplace, bidding, profile">
+    <script src="/src/auth/logout.js" type="module" defer></script>
+    <script src="/src/post/search.js" type="module" defer></script>
+    <meta name="description" content="Profile page on the auction platform, showcasing user information and listings.">
+    <meta name="keywords" content="profile, auction, user, listings, bio, credits, avatar, wins, profile details">
     <meta name="author" content="The Auctioneer">
 </head>
 
-<body>
-    <h2>Profile</h2>
-    <div id="profileContainer">
+<body class="bg-gray-300 text-black">
+    <header class="bg-deepBlue text-gold p-4 border-b border-gold sticky top-0 z-20">
+        <ul class="flex space-x-4">
+            <li class="logoutButton">
+                <a href="#" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Logout</a>
+            </li>
+            <li class="home">
+                <a href="/post/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Home</a>
+            </li>
+        </ul>
+        <form id="searchForm" class="mt-2 flex relative text-deepBlue">
+            <input type="text" id="searchInput" placeholder="Search listings..." required
+                class="border-deepBlue border p-2 rounded shadow-black w-full" />
+            <button type="submit"
+                class="bg-deepBlue text-gold ml-3 p-2 rounded hover:bg-gold hover:text-deepBlue">Search</button>
+            <div id="searchResults"
+                class="absolute bg-deepBlue shadow-md top-12 p-1 pt-[11px] mt-[11px] hidden ml-2 -left-[25px] space-x-0 rounded">
+            </div>
+        </form>
+    </header>
 
-    </div>
-    <h2>Your listings</h2>
-    <div id="listingsContainer">
+    <main class="p-8">
+        <section id="profileContainer" class="bg-white p-6 rounded-lg shadow-lg border border-deepBlue mb-8">
+            <h2 class="text-2xl font-bold text-deepBlue mb-4">Profile Details</h2>
+        </section>
 
-    </div>
+        <section id="listingsContainer" class="bg-white p-6 rounded-lg shadow-lg border border-deepBlue">
+            <h2 class="text-2xl font-bold text-deepBlue mb-4">Your Listings</h2>
+        </section>
+    </main>
 </body>
 
 </html>

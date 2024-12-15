@@ -4,40 +4,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit Listing</title>
     <script src="/src/main.js" type="module" defer></script>
+    <script src="/src/auth/logout.js" type="module" defer>
+    </script>
+    <script src="/src/post/search.js" type="module" defer></script>
     <!-- <link rel="icon" href="/assets/" type="image/x-icon"> need to download an icon to use here. -->
-    <meta name="description" content="editpage, auctioneer, description, tags, and media on our platform.">
+    <meta name="description" content="Edit your listing, update details like title, description, tags, and media.">
     <meta name="keywords"
-        content="auction, listing, update, sell, buy, auction site, marketplace, bidding, home, edit, listing">
+        content="auction, listing, update, edit, auction site, marketplace, bidding, home, edit, listing">
     <meta name="author" content="The Auctioneer">
 </head>
 
-<body>
-    <h2>Edit listing</h2>
-    <form class="createListingForm">
-        <label for="title">Title of your listing:</label>
-        <input placeholder="Type your title here" type="text" id="title" name="title" required />
+<body class="bg-gray-300 text-black">
+    <header class="bg-deepBlue text-gold p-4 border-b border-gold sticky top-0">
+        <ul class="flex space-x-4">
+            <li class="logoutButton">
+                <a href="#" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Logout</a>
+            </li>
+            <li class="profile">
+                <a href="/profile/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Your
+                    Profile</a>
+            </li>
+            <li>
+                <a href="/post/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Home</a>
+            </li>
+        </ul>
+        <form id="searchForm" class="mt-2 flex relative text-deepBlue">
+            <input type="text" id="searchInput" placeholder="Search listings..." required
+                class="border-deepBlue border p-2 rounded shadow-black w-full" />
+            <button type="submit"
+                class="bg-deepBlue text-gold ml-3 p-2 rounded hover:bg-gold hover:text-deepBlue">Search</button>
+            <div id="searchResults"
+                class="absolute bg-deepBlue shadow-md top-12 p-1 pt-[11px] mt-[11px] hidden ml-2 -left-[25px] space-x-0 rounded">
+            </div>
+        </form>
+    </header>
 
-        <label for="description">Description:</label>
-        <textarea placeholder="Type your description here" id="description" name="description" rows="20"
-            maxlength="2000" required></textarea>
+    <main class="p-8">
+        <h2 class="text-2xl font-bold text-center text-deepBlue mb-8">Edit Your Listing</h2>
+        <form class="createListingForm max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg border border-deepBlue">
+            <label for="title" class="block text-deepBlue font-semibold mb-2">Title of Your Listing:</label>
+            <input type="text" id="title" name="title" placeholder="Type your title here" required
+                class="w-full border-deepBlue border-2 p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-deepBlue" />
 
-        <label for="tags">Tags:</label>
-        <input type="text" placeholder="Type your tags here" id="tags" name="tags" maxlength="24" />
+            <label for="description" class="block text-deepBlue font-semibold mb-2">Description:</label>
+            <textarea id="description" name="description" rows="6" maxlength="2000"
+                placeholder="Type your description here" required
+                class="w-full border-deepBlue border-2 p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-deepBlue"></textarea>
 
-        <label for="altText">Alt:</label>
-        <input type="text" placeholder="Submit your alt text" id="altText" name="altText" />
+            <label for="tags" class="block text-deepBlue font-semibold mb-2">Tags:</label>
+            <input type="text" id="tags" name="tags" maxlength="24" placeholder="Type your tags here"
+                class="w-full border-deepBlue border-2 p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-deepBlue" />
 
-        <label for="image">Submit image:</label>
-        <input type="text" placeholder="Submit your image here" id="image" name="image" required />
+            <label for="altText" class="block text-deepBlue font-semibold mb-2">Alt Text for Image:</label>
+            <input type="text" id="altText" name="altText" placeholder="Submit your alt text"
+                class="w-full border-deepBlue border-2 p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-deepBlue" />
 
-        <button class="blogPost" type="submit">Edit listing</button>
-        <button type="button" id="deleteButton">Delete Listing</button>
-    </form>
+            <label for="image" class="block text-deepBlue font-semibold mb-2">Image URL:</label>
+            <input type="text" id="image" name="image" placeholder="Submit your image here" required
+                class="w-full border-deepBlue border-2 p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-deepBlue" />
 
+            <section id="imagePreview" class="hidden mb-4 max-w-m max-h-64 overflow-hidden mx-auto">
+            </section>
 
-    <div id="formMessage"></div>
+            <label for="endsAt" class="block text-deepBlue font-semibold mb-2">Ends At (Date):</label>
+            <input type="datetime-local" id="endsAt" name="endsAt" required
+                class="w-full border-deepBlue border-2 p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-deepBlue" />
+
+            <div class="flex justify-between space-x-4">
+                <button type="submit"
+                    class="w-full bg-deepBlue text-gold p-4 rounded hover:bg-gold hover:text-deepBlue font-semibold focus:outline-none focus:ring-2 focus:ring-gold">Save
+                    Changes</button>
+                <button type="button" id="deleteButton"
+                    class="w-full bg-red-600 text-white p-4 rounded hover:bg-red-700 font-semibold focus:outline-none focus:ring-2 focus:ring-red-500">Delete
+                    Listing</button>
+            </div>
+        </form>
+
+        <div id="formMessage" class="mt-4 text-center"></div>
+    </main>
 </body>
 
 </html>
