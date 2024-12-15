@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Profile</title>
     <script src="/src/main.js" type="module" defer></script>
+    <script src="/src/auth/logout.js" type="module" defer></script>
+    <script src="/src/post/search.js" type="module" defer></script>
     <meta name="description" content="Update your profile details, including bio, avatar, and banner.">
     <meta name="keywords"
         content="auction, profile, update, edit, auction site, marketplace, bidding, home, edit, profile">
@@ -26,6 +28,15 @@
                 <a href="/post/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Home</a>
             </li>
         </ul>
+        <form id="searchForm" class="mt-2 flex relative text-deepBlue">
+            <input type="text" id="searchInput" placeholder="Search listings..." required
+                class="border-deepBlue border p-2 rounded shadow-black w-full" />
+            <button type="submit"
+                class="bg-deepBlue text-gold ml-3 p-2 rounded hover:bg-gold hover:text-deepBlue">Search</button>
+            <div id="searchResults"
+                class="absolute bg-deepBlue shadow-md top-12 p-1 pt-[11px] mt-[11px] hidden ml-2 -left-[25px] space-x-0 rounded h-[500px] overflow-y-scroll max-w-lg">
+            </div>
+        </form>
     </header>
 
     <main class="p-8">
