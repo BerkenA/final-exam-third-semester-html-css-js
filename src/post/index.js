@@ -1,5 +1,4 @@
 import { allListings } from "../api/constants.js";
-console.log("Hello is it me youre looking for");
 
 let currentPage = 1;
 let sortField = "title";

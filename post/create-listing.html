@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Listing</title>
     <script src="/src/main.js" type="module" defer></script>
+    <script src="/src/post/search.js" type="module" defer></script>
+    <script src="/src/auth/logout.js" type="module" defer></script>
     <!-- <link rel="icon" href="/assets/" type="image/x-icon"> need to download an icon to use here. -->
     <meta name="description" content="create a listing, sell items, description, tags, and media on our platform.">
     <meta name="keywords" content="auction, listing, update, sell, buy, auction site, marketplace, bidding, create">
@@ -22,11 +24,19 @@
                 <a href="/profile/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Your
                     profile</a>
             </li>
-            <li class="createListing">
-                <a href="/post/create-listing.html"
-                    class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Create listing</a>
+            <li>
+                <a href="/post/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Home</a>
             </li>
         </ul>
+        <form id="searchForm" class="mt-2 flex relative text-deepBlue">
+            <input type="text" id="searchInput" placeholder="Search listings..." required
+                class="border-deepBlue border p-2 rounded shadow-black w-full" />
+            <button type="submit"
+                class="bg-deepBlue text-gold ml-3 p-2 rounded hover:bg-gold hover:text-deepBlue">Search</button>
+            <div id="searchResults"
+                class="absolute bg-deepBlue shadow-md top-12 p-1 pt-[11px] mt-[11px] hidden ml-2 -left-[25px] space-x-0 rounded">
+            </div>
+        </form>
     </header>
 
     <main class="p-8">

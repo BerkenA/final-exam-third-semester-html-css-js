@@ -44,43 +44,58 @@ async function getPostById(postId) {
 
       const container = document.querySelector(".postContainer");
       container.innerHTML = `
-            <h2>${truncateText(listing.title, 25)}</h2>
-            <p><strong>Description:</strong> ${truncateText(listing.description, 25)}</p>
-            <div><strong>Tags:</strong> ${listing.tags.join(", ")}</div>
-            <p><strong>Created:</strong> ${new Date(listing.created).toLocaleString()}</p>
-            <p><strong>Ends At:</strong> ${new Date(listing.endsAt).toLocaleString()}</p>
-            <p><strong>Bids:</strong> ${listing._count.bids}</p>
-            ${
-              highestBid !== null
-                ? `<p><strong>Highest Bid:</strong> ${highestBid}</p>`
-                : "<p>No bids placed yet.</p>"
-            }
-            ${
-              listing.media && listing.media.length > 0
-                ? `<img src="${listing.media[0].url}" alt="${listing.media[0].alt || "Listing Image"}" style="max-width: 300px;">`
-                : "<p>No image available</p>"
-            }
-          `;
+    <div class="flex space-x-8 items-center">
+      <div class="w-1/3 h-full">
+        <!-- Image Section -->
+        ${
+          listing.media && listing.media.length > 0
+            ? `<img src="${listing.media[0].url}" alt="${listing.media[0].alt || "Listing Image"}" class="w-full h-full object-cover rounded-lg shadow-lg">`
+            : "<p>No image available</p>"
+        }
+      </div>
+      <div class="w-2/3">
+        <!-- Information Section -->
+        <h2 class="text-2xl font-bold text-deepBlue mb-4">${truncateText(listing.title, 25)}</h2>
+        <p class="text-lg mb-4"><strong>Description:</strong> ${truncateText(listing.description, 150)}</p>
+        <div class="mb-4"><strong>Tags:</strong> ${listing.tags.join(", ")}</div>
+        <p class="mb-4"><strong>Created:</strong> ${new Date(listing.created).toLocaleString()}</p>
+        <p class="mb-4"><strong>Ends At:</strong> ${new Date(listing.endsAt).toLocaleString()}</p>
+        <p class="mb-4"><strong>Bids:</strong> ${listing._count.bids}</p>
+        ${
+          highestBid !== null
+            ? `<p class="mb-4"><strong>Highest Bid:</strong> ${highestBid}</p>`
+            : "<p>No bids placed yet.</p>"
+        }
+      </div>
+    </div>
+  `;
       renderBids(listing.bids);
     }
 
     function renderBids(bid) {
       const bidsContainer = document.querySelector(".bidsContainer");
       if (bid && bid.length > 0) {
-        console.log(bid);
         const bidList = bid
           .map(
             (bid) => `
-          <li>
-            <strong>Bid Amount:</strong> ${bid.amount}
-            <strong>By:</strong> ${bid.bidder.name}
-            <strong>Avatar:</strong><img src="${bid.bidder.banner.url}"
-            <em>Placed On:</em> ${new Date(bid.created).toLocaleString()}
-          </li>
-        `
+              <li class="p-6 mb-6 bg-white shadow-md rounded-lg space-y-4">
+                <div class="flex items-center space-x-4">
+                  <img src="${bid.bidder.banner.url}" alt="Avatar" class="h-12 w-12 rounded-full">
+                </div>
+                <div class="space-y-2">
+                  <strong>By:</strong> ${bid.bidder.name}
+                </div>
+                                <div class="space-y-2">
+                  <strong>Bid Amount:</strong> ${bid.amount}
+                </div>
+                <div class="space-y-2">
+                  <em><strong>Placed On:</strong></em> ${new Date(bid.created).toLocaleString()}
+                </div>
+              </li>
+            `
           )
           .join("");
-        bidsContainer.innerHTML = `<ul>${bidList}</ul>`;
+        bidsContainer.innerHTML = `<ul class="space-y-6">${bidList}</ul>`;
       } else {
         bidsContainer.innerHTML = "<p>No bids available.</p>";
       }
