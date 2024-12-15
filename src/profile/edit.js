@@ -22,19 +22,13 @@ function fetchListingDetails() {
     .then((response) => response.json())
     .then((data) => {
       if (data) {
-        document.getElementById("title").value = data.title;
-        document.getElementById("description").value = data.description;
-        document.getElementById("tags").value = data.tags?.join(", ");
+        document.getElementById("title").value = data.data.title;
+        document.getElementById("description").value = data.data.description;
+        document.getElementById("tags").value = data.data.tags?.join(", ");
 
-        if (data.media?.length) {
-          document.getElementById("altText").value = data.media[0].alt;
-          document.getElementById("image").value = data.media[0].url;
-        }
-
-        if (data.endsAt) {
-          const endsAtDate = new Date(data.endsAt);
-          document.getElementById("endsAt").value =
-            endsAtDate.toISOString().slice(0, 16) || "";
+        if (data.data.media?.length) {
+          document.getElementById("altText").value = data.data.media[0].alt;
+          document.getElementById("image").value = data.data.media[0].url;
         }
       } else {
         console.error("No data found");

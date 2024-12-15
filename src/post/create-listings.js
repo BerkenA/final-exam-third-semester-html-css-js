@@ -12,7 +12,7 @@ if (!accessToken) {
 
 function previewImage() {
   imgPreview.innerHTML = `
-    <img src="${imgInput.value}" id="preview" alt="preview" style="width: 100%">`;
+    <img class="object-contain"src="${imgInput.value}" id="preview" alt="preview" style="width: 100%">`;
 
   if (imgInput.value.length > 13) {
     imgPreview.style.display = "flex";

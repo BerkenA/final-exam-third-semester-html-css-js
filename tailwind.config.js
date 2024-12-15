@@ -6,7 +6,7 @@ export default {
       colors: {
         white: "#F9F9F9",
         gold: "#F9E871",
-        deepBlue: "#002D62",
+        deepBlue: "#41445F",
       },
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
