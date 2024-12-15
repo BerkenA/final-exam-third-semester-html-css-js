@@ -5,27 +5,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Profile</title>
-    <script src="/src/profile/update.js" type="module" defer></script>
-    <!-- <link rel="icon" href="/assets/" type="image/x-icon"> need to download an icon to use here. -->
-    <meta name="description" content="update, profile, auctioneer, description, tags, and media on our platform.">
+    <script src="/src/main.js" type="module" defer></script>
+    <meta name="description" content="Update your profile details, including bio, avatar, and banner.">
     <meta name="keywords"
-        content="auction, listing, update, sell, buy, auction site, marketplace, bidding, update, profile">
+        content="auction, profile, update, edit, auction site, marketplace, bidding, home, edit, profile">
     <meta name="author" content="The Auctioneer">
 </head>
 
-<body>
-    <form class="updateProfileForm" id="updateProfileForm">
-        <label for="bio">Bio:</label>
-        <textarea id="bio" name="bio" rows="4" placeholder="Enter your bio"></textarea>
+<body class="bg-gray-300 text-black">
+    <header class="bg-deepBlue text-gold p-4 border-b border-gold sticky top-0">
+        <ul class="flex space-x-4">
+            <li class="logoutButton">
+                <a href="#" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Logout</a>
+            </li>
+            <li class="profile">
+                <a href="/profile/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Your
+                    Profile</a>
+            </li>
+            <li>
+                <a href="/post/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Home</a>
+            </li>
+        </ul>
+    </header>
 
-        <label for="avatar">Avatar URL:</label>
-        <input type="text" id="avatar" name="avatar" placeholder="Enter avatar image URL">
+    <main class="p-8">
+        <h2 class="text-2xl font-bold text-center text-deepBlue mb-8">Update Your Profile</h2>
+        <form id="updateProfileForm" class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg border border-deepBlue">
+            <label for="bio" class="block text-deepBlue font-semibold mb-2">Bio:</label>
+            <textarea id="bio" name="bio" rows="4" placeholder="Enter your bio"
+                class="w-full border-deepBlue border-2 p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-deepBlue"></textarea>
 
-        <label for="banner">Banner URL:</label>
-        <input type="text" id="banner" name="banner" placeholder="Enter banner image URL">
+            <label for="avatar" class="block text-deepBlue font-semibold mb-2">Avatar URL:</label>
+            <input type="text" id="avatar" name="avatar" placeholder="Enter avatar image URL"
+                class="w-full border-deepBlue border-2 p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-deepBlue" />
 
-        <button type="submit">Update Profile</button>
-    </form>
+            <label for="banner" class="block text-deepBlue font-semibold mb-2">Banner URL:</label>
+            <input type="text" id="banner" name="banner" placeholder="Enter banner image URL"
+                class="w-full border-deepBlue border-2 p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-deepBlue" />
+
+            <button type="submit"
+                class="w-full bg-deepBlue text-gold p-4 rounded hover:bg-gold hover:text-deepBlue font-semibold focus:outline-none focus:ring-2 focus:ring-gold">Update
+                Profile</button>
+        </form>
+    </main>
+    <footer class="bg-deepBlue text-gold py-6">
+        <div class="container mx-auto text-center">
+            <p class="text-sm">
+                &copy; 2024 The Auctioneer. All rights reserved.
+            </p>
+            <p class="text-sm mt-2">
+                <a href="/privacy-policy" class="hover:text-white">Privacy Policy</a> |
+                <a href="/terms-of-service" class="hover:text-white">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
 </body>
 
 </html>

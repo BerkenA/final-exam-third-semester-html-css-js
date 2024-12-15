@@ -4,69 +4,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/src/main.js" type="module" defer></script>
     <title>Register</title>
-    <script src="../src/auth/register.js" type="module" defer></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- <link rel="icon" href="/assets/" type="image/x-icon"> need to download an icon to use here. -->
     <meta name="description"
         content="Register to The Auctioneer, create a user, description, tags, and media on our platform.">
     <meta name="keywords" content="auction, listing, update, sell, buy, auction site, marketplace, bidding, register">
     <meta name="author" content="The Auctioneer">
 </head>
 
-<body class="bg-white text-black">
-    <header class="bg-yellow-300 p-4 border-b border-gray-300">
+<body class="bg-gray-300 text-deepBlue h-full overflow-hidden">
+    <header class="bg-deepBlue text-gold p-4">
         <ul class="flex space-x-4">
             <li>
-                <a href="/auth/index.html" class="text-black hover:bg-gray-300 p-2 rounded">Login</a>
+                <a href="/auth/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Login</a>
             </li>
             <li>
-                <a href="/auth/register.html" class="text-black hover:bg-gray-300 p-2 rounded">Sign up</a>
+                <a href="/auth/register.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Sign
+                    up</a>
             </li>
             <li>
-                <a href="/index.html" class="text-black hover:bg-gray-300 p-2 rounded">Home</a>
+                <a href="/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Home</a>
             </li>
         </ul>
     </header>
 
-    <main class="flex justify-center items-center h-screen bg-gray-50">
-        <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-md border border-gray-300">
-            <h2 class="text-2xl font-bold mb-4 text-center">Create a New Account</h2>
+
+    <main class="flex justify-center items-center h-screen p-4">
+        <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-md border border-deepBlue">
+            <h2 class="text-2xl font-bold mb-4 text-center text-deepBlue">Create a New Account</h2>
             <form id="registrationForm" class="space-y-4">
                 <div>
-                    <label for="name" class="block text-sm font-medium mb-1">Username</label>
+                    <label for="name" class="block text-sm font-medium mb-1 text-deepBlue">Username</label>
                     <input type="text" id="name" name="name" placeholder="Enter your username" required
-                        class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        class="w-full border border-deepBlue p-2 rounded focus:outline-none focus:ring-2 focus:ring-gold" />
                 </div>
 
                 <div>
-                    <label for="email" class="block text-sm font-medium mb-1">Email Address</label>
+                    <label for="email" class="block text-sm font-medium mb-1 text-deepBlue">Email Address</label>
                     <input type="email" id="email" name="email" placeholder="Enter your email" required
-                        class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        class="w-full border border-deepBlue p-2 rounded focus:outline-none focus:ring-2 focus:ring-gold" />
                 </div>
 
                 <div>
-                    <label for="password" class="block text-sm font-medium mb-1">Password</label>
+                    <label for="password" class="block text-sm font-medium mb-1 text-deepBlue">Password</label>
                     <input type="password" id="password" name="password" placeholder="Enter your password" required
-                        class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        class="w-full border border-deepBlue p-2 rounded focus:outline-none focus:ring-2 focus:ring-gold" />
                 </div>
 
                 <div>
-                    <label for="confirmPassword" class="block text-sm font-medium mb-1">Confirm Password</label>
+                    <label for="confirmPassword" class="block text-sm font-medium mb-1 text-deepBlue">Confirm
+                        Password</label>
                     <input type="password" id="confirmPassword" name="confirmPassword"
                         placeholder="Confirm your password" required
-                        class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        class="w-full border border-deepBlue p-2 rounded focus:outline-none focus:ring-2 focus:ring-gold" />
                 </div>
 
                 <button type="submit"
-                    class="w-full bg-black text-white py-2 rounded hover:bg-gray-700">Register</button>
+                    class="w-full bg-deepBlue text-white py-2 rounded hover:bg-gold hover:text-deepBlue">Register</button>
             </form>
-            <p class="mt-4 text-center text-sm">
+            <p class="mt-4 text-center text-sm text-deepBlue">
                 Already have an account?
                 <a href="../auth/index.html" class="text-blue-500 hover:underline">Login here</a>
             </p>
         </div>
     </main>
+    <footer class="bg-deepBlue text-gold py-6">
+        <div class="container mx-auto text-center">
+            <p class="text-sm">
+                &copy; 2024 The Auctioneer. All rights reserved.
+            </p>
+            <p class="text-sm mt-2">
+                <a href="/privacy-policy" class="hover:text-white">Privacy Policy</a> |
+                <a href="/terms-of-service" class="hover:text-white">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
 </body>
 
 </html>

@@ -4,31 +4,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="../src/router/singlepost.js" type="module" defer></script>
-    <!-- <link rel="icon" href="/assets/" type="image/x-icon"> need to download an icon to use here. -->
+    <title>Place Your Bid</title>
+    <script src="/src/main.js" type="module" defer></script>
+    <script src="/src/auth/logout.js" type="module" defer>
+    </script>
+    <script src="/src/post/search.js" type="module" defer></script>
     <meta name="description" content="specific, listing, auctioneer, description, tags, and media on our platform.">
     <meta name="keywords"
         content="auction, listing, update, sell, buy, auction site, marketplace, bidding, home, listing">
     <meta name="author" content="The Auctioneer">
 </head>
 
-<body>
-    <div class="postContainer"></div>
-    <div class="bidInfoContainer"></div>
-
-    <div class="bidFormContainer">
-        <h3>Place a Bid</h3>
-        <form id="bidForm">
-            <label for="bidAmount" id="bidLabel">Bid Amount ($): </label>
-            <input type="number" id="bidAmount" name="amount" min="0" required>
-            <button type="submit">Submit Bid</button>
+<body class="bg-gray-300 text-black">
+    <header class="bg-deepBlue text-gold p-4 border-b border-gold sticky top-0">
+        <ul class="flex space-x-4">
+            <li class="logoutButton">
+                <a href="#" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Logout</a>
+            </li>
+            <li class="profile">
+                <a href="/profile/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Your
+                    Profile</a>
+            </li>
+            <li>
+                <a href="/post/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Home</a>
+            </li>
+        </ul>
+        <form id="searchForm" class="mt-2 flex relative text-deepBlue">
+            <input type="text" id="searchInput" placeholder="Search listings..." required
+                class="border-deepBlue border p-2 rounded shadow-black w-full" />
+            <button type="submit"
+                class="bg-deepBlue text-gold ml-3 p-2 rounded hover:bg-gold hover:text-deepBlue">Search</button>
+            <div id="searchResults"
+                class="absolute bg-deepBlue shadow-md top-12 p-1 pt-[11px] mt-[11px] hidden ml-2 -left-[25px] space-x-0 rounded">
+            </div>
         </form>
-        <div id="bidError" style="color: red; display: none;">Please enter a valid bid amount.</div>
-        <div class="postContainer"></div>
-        <div class="bidsContainer"></div>
-    </div>
+    </header>
 
+    <main class="p-8">
+        <h2 class="text-2xl font-bold text-center text-deepBlue mb-8">Place Your Bid</h2>
+
+        <div class="postContainer bg-white shadow-lg rounded-lg p-6 mb-8">
+
+        </div>
+
+        <div class="bidInfoContainer mb-8">
+
+        </div>
+
+        <div class="bidFormContainer bg-white p-6 rounded-lg shadow-lg border border-deepBlue">
+            <h3 class="text-xl font-semibold text-deepBlue mb-4">Place a Bid</h3>
+            <form id="bidForm">
+                <label for="bidAmount" id="bidLabel" class="block text-deepBlue font-semibold mb-2">Bid Amount
+                    ($):</label>
+                <input type="number" id="bidAmount" name="amount" min="0" required
+                    class="w-full border-deepBlue border-2 p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-deepBlue" />
+                <button type="submit"
+                    class="w-full bg-deepBlue text-gold p-4 rounded hover:bg-gold hover:text-deepBlue font-semibold focus:outline-none focus:ring-2 focus:ring-gold">
+                    Submit Bid
+                </button>
+            </form>
+            <div id="bidError" class="text-red-600 mt-2 text-center hidden">Please enter a valid bid amount.</div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-center text-deepBlue mt-8 mb-8">Previous bids</h2>
+        <div class="bidsContainer mt-4">
+
+        </div>
+    </main>
+    <footer class="bg-deepBlue text-gold py-6">
+        <div class="container mx-auto text-center">
+            <p class="text-sm">
+                &copy; 2024 The Auctioneer. All rights reserved.
+            </p>
+            <p class="text-sm mt-2">
+                <a href="/privacy-policy" class="hover:text-white">Privacy Policy</a> |
+                <a href="/terms-of-service" class="hover:text-white">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
 </body>
 
 </html>

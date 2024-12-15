@@ -1,19 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./auth/**/*.{html,js}",
-    "./post/**/*.{html,js}",
-    "./profile/**/*.{html,js}",
-    "./src/**/*.{html,js,ts,jsx,tsx}",
-    "./src/js/**/*.{html,js,ts,jsx,tsx}",
-  ],
+  content: ["./**/*.{html,js,ts}", "!./node_modules/**/*"],
   theme: {
     extend: {
       colors: {
-        ivory: "#F7F0F5",
-        gold: "#F1D302",
-        black: "#020100",
+        white: "#F9F9F9",
+        gold: "#F9E871",
+        deepBlue: "#41445F",
       },
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
