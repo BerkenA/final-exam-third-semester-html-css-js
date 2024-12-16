@@ -72,10 +72,12 @@ async function getPostById(postId) {
       renderBids(listing.bids);
     }
 
-    function renderBids(bid) {
+    function renderBids(bids) {
       const bidsContainer = document.querySelector(".bidsContainer");
-      if (bid && bid.length > 0) {
-        const bidList = bid
+      if (bids && bids.length > 0) {
+        const sortedBids = bids.sort((a, b) => a.amount - b.amount);
+
+        const bidList = sortedBids
           .map(
             (bid) => `
               <li class="p-6 mb-6 bg-white shadow-md rounded-lg space-y-4">
@@ -85,8 +87,8 @@ async function getPostById(postId) {
                 <div class="space-y-2">
                   <strong>By:</strong> ${bid.bidder.name}
                 </div>
-                                <div class="space-y-2">
-                  <strong>Bid Amount:</strong> ${bid.amount}
+                <div class="space-y-2">
+                  <strong>Bid Amount:</strong> ${bid.amount}<i class="fa-solid fa-dollar-sign" style="color: #039b6d;"></i>
                 </div>
                 <div class="space-y-2">
                   <em><strong>Placed On:</strong></em> ${new Date(bid.created).toLocaleString()}

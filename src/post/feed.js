@@ -40,9 +40,26 @@ async function getAllListings(
   }
 }
 
+function updateLimitBasedOnScreenSize() {
+  if (window.innerWidth > 1280) {
+    limit = 21;
+  } else {
+    limit = 16;
+  }
+}
+
+updateLimitBasedOnScreenSize();
+window.addEventListener("resize", () => {
+  updateLimitBasedOnScreenSize();
+  getAllListings(currentPage, limit, sortField, sortOrder);
+});
+
 function renderListings(listings) {
   const container = document.querySelector(".mainContainer");
   container.innerHTML = "";
+
+  // Add Tailwind grid classes for responsive layout
+  container.classList.add("grid", "grid-cols-1", "gap-4", "xl:grid-cols-3");
 
   if (listings && listings.length > 0) {
     listings.forEach((listing) => {
@@ -57,8 +74,7 @@ function renderListings(listings) {
         "items-stretch",
         "gap-x-4",
         "mb-4",
-        "shadow-md",
-        "flex-wrap"
+        "shadow-md"
       );
 
       const image = document.createElement("img");
@@ -94,20 +110,12 @@ function renderListings(listings) {
       endsAt.innerHTML = `<strong>Ends At:</strong> ${new Date(listing.endsAt).toLocaleString()}`;
 
       const countdown = document.createElement("p");
-      countdown.classList.add("mb-1", "text-deepBlue");
+      countdown.classList.add("mb-1", "text-red-700");
       countdown.innerHTML = `<strong>Time Left:</strong> <span id="timer-${listing.id}"></span>`;
 
       const bids = document.createElement("p");
       bids.classList.add("mb-1", "text-deepBlue");
       bids.innerHTML = `<strong>Bids:</strong> ${listing._count.bids}`;
-
-      const created = document.createElement("p");
-      created.classList.add("mb-1", "text-deepBlue");
-      created.innerHTML = `<strong>Created:</strong> ${new Date(listing.created).toLocaleString()}`;
-
-      const updated = document.createElement("p");
-      updated.classList.add("mb-1", "text-deepBlue");
-      updated.innerHTML = `<strong>Last Updated:</strong> ${new Date(listing.updated).toLocaleString()}`;
 
       const link = document.createElement("a");
       link.href = `/post/listings.html?id=${listing.id}`;
@@ -118,8 +126,6 @@ function renderListings(listings) {
       link.appendChild(endsAt);
       link.appendChild(countdown);
       link.appendChild(bids);
-      link.appendChild(created);
-      link.appendChild(updated);
 
       infoDiv.appendChild(link);
       listingDiv.appendChild(image);
@@ -176,6 +182,11 @@ function renderPagination(meta) {
     paginationContainer.appendChild(prevButton);
   }
 
+  const pageInfo = document.createElement("span");
+  pageInfo.textContent = `Page ${currentPage} of ${pageCount}`;
+  pageInfo.classList.add("text-deepBlue", "font-bold", "mx-2");
+  paginationContainer.appendChild(pageInfo);
+
   if (currentPage < pageCount) {
     const nextButton = document.createElement("button");
     nextButton.textContent = "Next";
@@ -212,4 +223,5 @@ document.getElementById("sortOrder").addEventListener("change", (event) => {
   changeSortOrder(event.target.value);
 });
 
+updateLimitBasedOnScreenSize();
 getAllListings(currentPage, limit, sortField, sortOrder);

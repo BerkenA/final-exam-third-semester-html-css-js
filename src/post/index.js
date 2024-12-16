@@ -33,6 +33,20 @@ async function getAllListings(
   }
 }
 
+function updateLimitBasedOnScreenSize() {
+  if (window.innerWidth > 1280) {
+    limit = 21;
+  } else {
+    limit = 16;
+  }
+}
+
+updateLimitBasedOnScreenSize();
+window.addEventListener("resize", () => {
+  updateLimitBasedOnScreenSize();
+  getAllListings(currentPage, limit, sortField, sortOrder);
+});
+
 function renderListings(listings) {
   const container = document.querySelector(".mainContainer");
   container.innerHTML = "";
@@ -51,7 +65,8 @@ function renderListings(listings) {
         "gap-x-4",
         "mb-4",
         "shadow-md",
-        "flex-wrap"
+        "flex-wrap",
+        "overflow-hidden"
       );
 
       const image = document.createElement("img");
@@ -170,6 +185,11 @@ function renderPagination(meta) {
     paginationContainer.appendChild(prevButton);
   }
 
+  const pageInfo = document.createElement("span");
+  pageInfo.textContent = `Page ${currentPage} of ${pageCount}`;
+  pageInfo.classList.add("text-deepBlue", "font-bold", "mx-2");
+  paginationContainer.appendChild(pageInfo);
+
   if (currentPage < pageCount) {
     const nextButton = document.createElement("button");
     nextButton.textContent = "Next";
@@ -207,4 +227,5 @@ document.getElementById("sortOrder").addEventListener("change", (event) => {
   changeSortOrder(event.target.value);
 });
 
+updateLimitBasedOnScreenSize();
 getAllListings(currentPage, limit, sortField, sortOrder);

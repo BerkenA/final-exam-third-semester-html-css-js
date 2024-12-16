@@ -9,6 +9,8 @@
     <script src="/src/auth/logout.js" type="module" defer>
     </script>
     <script src="/src/post/search.js" type="module" defer></script>
+    <script src="https://kit.fontawesome.com/c2d4bd022b.js" crossorigin="anonymous" defer></script>
+    <link rel="icon" href="/public/gavel-solid.svg" type="image/svg+xml">
     <meta name="description" content="specific, listing, auctioneer, description, tags, and media on our platform.">
     <meta name="keywords"
         content="auction, listing, update, sell, buy, auction site, marketplace, bidding, home, listing">
@@ -16,19 +18,26 @@
 </head>
 
 <body class="bg-gray-300 text-black">
-    <header class="bg-deepBlue text-gold p-4 border-b border-gold sticky top-0">
-        <ul class="flex space-x-4">
-            <li class="logoutButton">
-                <a href="#" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Logout</a>
-            </li>
-            <li class="profile">
-                <a href="/profile/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Your
-                    Profile</a>
-            </li>
-            <li>
-                <a href="/post/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Home</a>
-            </li>
-        </ul>
+    <header class="bg-deepBlue text-gold p-4 pt-0 border-b border-gold sticky top-0">
+        <div class="flex items-center w-full">
+            <ul class="flex space-x-4">
+                <li class="logoutButton">
+                    <a href="#" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Logout</a>
+                </li>
+                <li class="profile">
+                    <a href="/profile/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Your
+                        Profile</a>
+                </li>
+                <li>
+                    <a href="/post/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Home</a>
+                </li>
+            </ul>
+            <ul class="ml-auto">
+                <li>
+                    <img class="h-20 w-32" src="/public/logo.png" alt="the auctioneer logo">
+                </li>
+            </ul>
+        </div>
         <form id="searchForm" class="mt-2 flex relative text-deepBlue">
             <input type="text" id="searchInput" placeholder="Search listings..." required
                 class="border-deepBlue border p-2 rounded shadow-black w-full" />
@@ -55,11 +64,11 @@
             <h3 class="text-xl font-semibold text-deepBlue mb-4">Place a Bid</h3>
             <form id="bidForm">
                 <label for="bidAmount" id="bidLabel" class="block text-deepBlue font-semibold mb-2">Bid Amount
-                    ($):</label>
+                    (<i class="fa-solid fa-dollar-sign" style="color: #039b6d;"></i>):</label>
                 <input type="number" id="bidAmount" name="amount" min="0" required
                     class="w-full border-deepBlue border-2 p-3 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-deepBlue" />
                 <button type="submit"
-                    class="w-full bg-deepBlue text-gold p-4 rounded hover:bg-gold hover:text-deepBlue font-semibold focus:outline-none focus:ring-2 focus:ring-gold">
+                    class="w-full bg-green-600 text-gold p-4 rounded hover:bg-green-800 hover:text-gold font-semibold focus:outline-none focus:ring-2 focus:ring-gold">
                     Submit Bid
                 </button>
             </form>
@@ -77,8 +86,8 @@
                 &copy; 2024 The Auctioneer. All rights reserved.
             </p>
             <p class="text-sm mt-2">
-                <a href="/privacy-policy" class="hover:text-white">Privacy Policy</a> |
-                <a href="/terms-of-service" class="hover:text-white">Terms of Service</a>
+                <a href="#" class="hover:text-white">Privacy Policy</a> |
+                <a href="#" class="hover:text-white">Terms of Service</a>
             </p>
         </div>
     </footer>

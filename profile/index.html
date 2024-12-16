@@ -8,25 +8,34 @@
     <script src="/src/main.js" type="module" defer></script>
     <script src="/src/auth/logout.js" type="module" defer></script>
     <script src="/src/post/search.js" type="module" defer></script>
+    <script src="https://kit.fontawesome.com/c2d4bd022b.js" crossorigin="anonymous" defer></script>
+    <link rel="icon" href="/public/gavel-solid.svg" type="image/svg+xml">
     <meta name="description" content="Profile page on the auction platform, showcasing user information and listings.">
     <meta name="keywords" content="profile, auction, user, listings, bio, credits, avatar, wins, profile details">
     <meta name="author" content="The Auctioneer">
 </head>
 
 <body class="bg-gray-300 text-black">
-    <header class="bg-deepBlue text-gold p-4 border-b border-gold sticky top-0 z-20">
-        <ul class="flex space-x-4">
-            <li class="logoutButton">
-                <a href="#" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Logout</a>
-            </li>
-            <li class="home">
-                <a href="/post/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Home</a>
-            </li>
-            <li class="createListing">
-                <a href="/post/create-listing.html"
-                    class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Create listing</a>
-            </li>
-        </ul>
+    <header class="bg-deepBlue text-gold p-4 border-b border-gold sticky top-0 z-20 pt-0">
+        <div class="flex items-center w-full">
+            <ul class="flex space-x-4">
+                <li class="logoutButton">
+                    <a href="#" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Logout</a>
+                </li>
+                <li class="home">
+                    <a href="/post/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Home</a>
+                </li>
+                <li class="createListing">
+                    <a href="/post/create-listing.html"
+                        class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Create listing</a>
+                </li>
+            </ul>
+            <ul class="ml-auto">
+                <li>
+                    <img class="h-20 w-32" src="/public/logo.png" alt="the auctioneer logo">
+                </li>
+            </ul>
+        </div>
         <form id="searchForm" class="mt-2 flex relative text-deepBlue">
             <input type="text" id="searchInput" placeholder="Search listings..." required
                 class="border-deepBlue border p-2 rounded shadow-black w-full" />
@@ -53,8 +62,8 @@
                 &copy; 2024 The Auctioneer. All rights reserved.
             </p>
             <p class="text-sm mt-2">
-                <a href="/privacy-policy" class="hover:text-white">Privacy Policy</a> |
-                <a href="/terms-of-service" class="hover:text-white">Terms of Service</a>
+                <a href="#" class="hover:text-white">Privacy Policy</a> |
+                <a href="#" class="hover:text-white">Terms of Service</a>
             </p>
         </div>
     </footer>
