@@ -13,19 +13,26 @@
 </head>
 
 <body class="bg-gray-300 text-deepBlue h-full overflow-hidden">
-    <header class="bg-deepBlue text-gold p-4">
-        <ul class="flex space-x-4">
-            <li>
-                <a href="/auth/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Login</a>
-            </li>
-            <li>
-                <a href="/auth/register.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Sign
-                    up</a>
-            </li>
-            <li>
-                <a href="/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Home</a>
-            </li>
-        </ul>
+    <header class="bg-deepBlue text-gold p-0">
+        <div class="flex items-center w-full">
+            <ul class="flex space-x-4">
+                <li>
+                    <a href="/auth/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Login</a>
+                </li>
+                <li>
+                    <a href="/auth/register.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Sign
+                        up</a>
+                </li>
+                <li>
+                    <a href="/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded">Home</a>
+                </li>
+            </ul>
+            <ul class="ml-auto">
+                <li>
+                    <img class="h-20 w-32" src="/public/logo.png" alt="the auctioneer logo">
+                </li>
+            </ul>
+        </div>
     </header>
 
 
@@ -60,7 +67,7 @@
                 </div>
 
                 <button type="submit"
-                    class="w-full bg-deepBlue text-white py-2 rounded hover:bg-gold hover:text-deepBlue">Register</button>
+                    class="w-full bg-deepBlue text-white py-2 rounded hover:bg-yellow-300 hover:text-deepBlue">Register</button>
                 <div id="errorDiv" style="display: none;"></div>
             </form>
             <p class="mt-4 text-center text-sm text-deepBlue">
@@ -75,8 +82,8 @@
                 &copy; 2024 The Auctioneer. All rights reserved.
             </p>
             <p class="text-sm mt-2">
-                <a href="/privacy-policy" class="hover:text-white">Privacy Policy</a> |
-                <a href="/terms-of-service" class="hover:text-white">Terms of Service</a>
+                <a href="#" class="hover:text-white">Privacy Policy</a> |
+                <a href="#" class="hover:text-white">Terms of Service</a>
             </p>
         </div>
     </footer>

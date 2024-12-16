@@ -61,6 +61,7 @@ async function getPostById(postId) {
         <p class="mb-4"><strong>Created:</strong> ${new Date(listing.created).toLocaleString()}</p>
         <p class="mb-4"><strong>Ends At:</strong> ${new Date(listing.endsAt).toLocaleString()}</p>
         <p class="mb-4"><strong>Bids:</strong> ${listing._count.bids}</p>
+        
         ${
           highestBid !== null
             ? `<p class="mb-4"><strong>Highest Bid:</strong> ${highestBid}</p>`
