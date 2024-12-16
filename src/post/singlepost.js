@@ -75,7 +75,6 @@ async function getPostById(postId) {
     function renderBids(bids) {
       const bidsContainer = document.querySelector(".bidsContainer");
       if (bids && bids.length > 0) {
-        // Sort bids in ascending order based on the bid amount
         const sortedBids = bids.sort((a, b) => a.amount - b.amount);
 
         const bidList = sortedBids
@@ -89,7 +88,7 @@ async function getPostById(postId) {
                   <strong>By:</strong> ${bid.bidder.name}
                 </div>
                 <div class="space-y-2">
-                  <strong>Bid Amount:</strong> ${bid.amount}
+                  <strong>Bid Amount:</strong> ${bid.amount}<i class="fa-solid fa-dollar-sign" style="color: #039b6d;"></i>
                 </div>
                 <div class="space-y-2">
                   <em><strong>Placed On:</strong></em> ${new Date(bid.created).toLocaleString()}

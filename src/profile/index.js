@@ -40,7 +40,7 @@ function fetchProfileData() {
           <div class="mb-4 text-deepBlue">
             <p><strong>Email:</strong> ${profile.email}</p>
             <p><strong>Bio:</strong> ${profile.bio || "No bio available"}</p>
-            <p><strong>Credits:</strong> ${profile.credits}</p>
+            <p><strong>Credits:</strong> ${profile.credits}<i class="fa-solid fa-dollar-sign ml-1" style="color: #039b6d;"></i></p>
             <p><strong>Listings:</strong> ${profile._count.listings}</p>
             <p><strong>Wins:</strong> ${profile._count.wins}</p>
           </div>
