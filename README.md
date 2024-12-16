@@ -41,12 +41,15 @@ This project is a **web-based auction platform** where users can create listings
    git clone https://github.com/BerkenA/final-exam-third-semester-html-css-js
 
 2. Navigate to project directory:
+
+   ```bash
   cd final-exam-third-semester-html-css-js
 
-3. Install the dependencies
+4. Install the dependencies
+  
    npm install
 
-4. Start the development server
+6. Start the development server
    npm run dev
    
 The project will now be running on http://localhost:5173
