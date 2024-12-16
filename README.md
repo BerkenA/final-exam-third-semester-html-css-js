@@ -42,7 +42,6 @@ This project is a **web-based auction platform** where users can create listings
 
 2. Navigate to project directory:
 
-   ```bash
   cd final-exam-third-semester-html-css-js
 
 4. Install the dependencies
