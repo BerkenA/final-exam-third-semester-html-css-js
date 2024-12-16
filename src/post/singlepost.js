@@ -10,6 +10,12 @@ function getPostIdFromQuery() {
 
 if (!accessToken) {
   removeBidAmount.style.display = "none";
+
+  const logoutButton = document.querySelector(".logoutButton");
+  logoutButton.innerHTML = `
+    <a href="/auth/index.html" class="text-gold hover:bg-gold hover:text-deepBlue p-2 rounded" 
+    aria-label="click here to login">Login</a>`;
+  logoutButton.replaceWith(logoutButton.cloneNode(true));
 }
 
 async function getPostById(postId) {
@@ -46,7 +52,6 @@ async function getPostById(postId) {
       container.innerHTML = `
     <div class="flex space-x-8 items-center">
       <div class="w-1/3 h-full">
-        <!-- Image Section -->
         ${
           listing.media && listing.media.length > 0
             ? `<img src="${listing.media[0].url}" alt="${listing.media[0].alt || "Listing Image"}" class="w-full h-full object-cover rounded-lg shadow-lg">`
@@ -56,7 +61,7 @@ async function getPostById(postId) {
       <div class="w-2/3">
         <!-- Information Section -->
         <h2 class="text-2xl font-bold text-deepBlue mb-4">${truncateText(listing.title, 25)}</h2>
-        <p class="text-lg mb-4"><strong>Description:</strong> ${truncateText(listing.description, 150)}</p>
+        <p class="text-lg overflow-hidden mb-4"><strong>Description:</strong> ${truncateText(listing.description, 50)}</p>
         <div class="mb-4"><strong>Tags:</strong> ${listing.tags.join(", ")}</div>
         <p class="mb-4"><strong>Created:</strong> ${new Date(listing.created).toLocaleString()}</p>
         <p class="mb-4"><strong>Ends At:</strong> ${new Date(listing.endsAt).toLocaleString()}</p>

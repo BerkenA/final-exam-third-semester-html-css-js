@@ -65,7 +65,6 @@ function renderListings(listings) {
         "gap-x-4",
         "mb-4",
         "shadow-md",
-        "flex-wrap",
         "overflow-hidden"
       );
 
@@ -85,11 +84,11 @@ function renderListings(listings) {
 
       const title = document.createElement("h2");
       title.classList.add("font-bold", "text-lg", "mb-2", "text-deepBlue");
-      title.textContent = truncateText(listing.title, 20);
+      title.textContent = truncateText(listing.title, 10);
 
       const description = document.createElement("p");
       description.classList.add("mb-1", "text-deepBlue");
-      description.innerHTML = `<strong>Description:</strong> ${truncateText(listing.description, 20)}`;
+      description.innerHTML = `<strong>Description:</strong> ${truncateText(listing.description, 10)}`;
 
       const tags = document.createElement("p");
       tags.classList.add("mb-1", "text-deepBlue");
