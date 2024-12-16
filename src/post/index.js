@@ -65,7 +65,8 @@ function renderListings(listings) {
         "gap-x-4",
         "mb-4",
         "shadow-md",
-        "flex-wrap"
+        "flex-wrap",
+        "overflow-hidden"
       );
 
       const image = document.createElement("img");
