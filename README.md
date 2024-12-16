@@ -83,8 +83,8 @@ The application is deployed on Netlify:
 
  Live Demo: https://theauctioneer.netlify.app/index.html
 
-###License
+### License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-Contact
+### Contact
 For any questions, feel free to contact me at berken_93@hotmail.com.
